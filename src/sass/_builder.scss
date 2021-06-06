@@ -1,0 +1,25 @@
+.builder{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px 0;
+
+    button{
+        display: block;
+        font: inherit;
+        padding: 5px;
+        margin: 0 12px;
+        width: 80px;
+        background:purple;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        outline: none;
+    }
+
+    div{
+        color: rgb(70, 0, 12);
+        margin: 0 12px;
+    }
+
+}

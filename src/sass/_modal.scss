@@ -1,0 +1,29 @@
+@import 'mediaQueries';
+.modal{
+    position:fixed;
+    z-index:300;
+    background: whitesmoke;
+    width: 25%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 16px;
+    left:38%;
+    top:25%;
+    box-sizing: border-box;
+    text-align: center;
+    transition: all 0.3s ease-out;
+    border-radius: 88px;
+box-shadow: inset 31px 31px 63px #a00fbd,
+            inset -31px -31px 63px #d815ff;
+
+    
+
+ 
+}
+
+@include for-size(phone-only) {
+      .modal{
+          width:30%;
+          left:35%;
+      } 
+}

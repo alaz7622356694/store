@@ -1,0 +1,22 @@
+.nav-item{
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+    align-items: center;
+
+    a{
+        color: whitesmoke;
+        text-decoration: none;
+        height: 100%;
+        padding: 16px 10px;
+        box-sizing: border-box;
+        display: block;
+
+        &:hover{
+
+            background: rgb(255, 29, 255);
+
+        }
+    }
+}
