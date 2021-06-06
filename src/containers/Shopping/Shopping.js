@@ -67,7 +67,22 @@ modalCloseHandler=()=>{
 }
 
 purchaseContinueHandler=()=>{
-    console.log('purchaseHandler')
+    const order={
+        products: this.state.products,
+        totalPrice: this.state.totalPrice,
+        customer:{
+            name: 'Ali' ,
+            email: 'alireza.azari2235@outlook.com' 
+
+        }
+
+    }
+    axios.post('/posts', order).then((response)=>{
+        console.log(response)
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
 }
 
     render(){
