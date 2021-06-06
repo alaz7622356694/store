@@ -3,6 +3,7 @@ import Wrapper from '../../hoc/Wrapper'
 import Controls from '../../components/controls/Controls'
 import Modal from '../../components/ui elements/modal/Modal'
 import Order from '../../components/order/Order'
+import axios from '../../Axios-orders'
 const prices={
     product1:59,
     product2:12,
