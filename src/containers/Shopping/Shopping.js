@@ -4,6 +4,8 @@ import Controls from '../../components/controls/Controls'
 import Modal from '../../components/ui elements/modal/Modal'
 import Order from '../../components/order/Order'
 import axios from '../../Axios-orders'
+import Loader from '../../../src/components/ui elements/loader/Loader'
+
 const prices={
     product1:59,
     product2:12,
@@ -13,14 +15,18 @@ const prices={
 
 class Shopping extends React.Component{
     state={
-        products:{
-            product1:0,
-            product2:0,
-            product3:0,
-            product4:0,
-        },
+        products:null,
         totalPrice:0,
-        purchased:false
+        purchased:false,
+        loading:false
+    }
+
+    componentDidMount(){
+        axios.get('').then((response)=>{
+
+            this.setState({products:response.data})
+
+        })
     }
 
     addProductHandler=(type)=>{
@@ -67,6 +73,8 @@ modalCloseHandler=()=>{
 }
 
 purchaseContinueHandler=()=>{
+
+this.setState({loading:true})
     const order={
         products: this.state.products,
         totalPrice: this.state.totalPrice,
@@ -77,22 +85,50 @@ purchaseContinueHandler=()=>{
         }
 
     }
-    axios.post('/posts', order).then((response)=>{
-        console.log(response)
+    axios.post('/orders.json', order).then((response)=>{
+        this.setState({loading:false , purchased:false})
     })
     .catch((error)=>{
-        console.log(error)
+        this.setState({loading:false , purchased:false})
     })
 }
 
     render(){
+      let order=null
+
+            if(this.state.loading){
+                order=<Loader/>
+            }
+
+            let controls=<Loader/>
+
+            if(this.state.products){
+                controls=(<Controls 
+                 productAdd={this.addProductHandler}
+                  productRemove={this.removeProductHandler}
+                   price={this.state.totalPrice} 
+                   order={this.purchasedHandler}/>
+                )
+            
+
+            order=(
+            <Order products={this.state.products}
+             continue={this.purchaseContinueHandler} 
+             cancel={this.modalCloseHandler}
+              price={this.state.totalPrice} />
+            )}
         return(
+            
             <Wrapper>
               <Modal show={this.state.purchased} modalClose={this.modalCloseHandler}>
-                  <Order products={this.state.products} continue={this.purchaseContinueHandler} cancel={this.modalCloseHandler} price={this.state.totalPrice} />
+                 {order}
               </Modal>
-                <Controls productAdd={this.addProductHandler} productRemove={this.removeProductHandler} price={this.state.totalPrice} order={this.purchasedHandler}/>
+                {controls}
+              
             </Wrapper>
+
+           
+            
         )
     }
 }
