@@ -74,23 +74,23 @@ modalCloseHandler=()=>{
 
 purchaseContinueHandler=()=>{
 this.props.history.push('/Checkout')
-// this.setState({loading:true})
-//     const order={
-//         products: this.state.products,
-//         totalPrice: this.state.totalPrice,
-//         customer:{
-//             name: 'Ali' ,
-//             email: 'alireza.azari2235@outlook.com' 
+this.setState({loading:true})
+    const order={
+        products: this.state.products,
+        totalPrice: this.state.totalPrice,
+        customer:{
+            name: 'Ali' ,
+            email: 'alireza.azari2235@outlook.com' 
 
-//         }
+        }
 
-//     }
-//     axios.post('/orders.json', order).then((response)=>{
-//         this.setState({loading:false , purchased:false})
-//     })
-//     .catch((error)=>{
-//         this.setState({loading:false , purchased:false})
-//     })
+    }
+    axios.post('/orders.json', order).then((response)=>{
+        this.setState({loading:false , purchased:false})
+    })
+    .catch((error)=>{
+        this.setState({loading:false , purchased:false})
+    })
 }
 
     render(){
