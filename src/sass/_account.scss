@@ -1,0 +1,19 @@
+.account{
+    width:50rem;
+    background: rgb(242, 140, 255);
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin: 150px 300px;
+    border-radius: 5px;
+    padding:50px 0;
+
+    h2{
+        color:rgb(255, 255, 255) ;
+        font-size: 22px;
+    }
+}
