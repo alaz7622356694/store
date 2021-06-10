@@ -19,7 +19,7 @@ return (
     return(
         <Wrapper>
             <h3>Order</h3>
-            <ul Style="list-style-type: none; margin-right:40px;">
+            <ul>
 {summary}
             </ul>
             <p>Total Price:{props.price}</p>

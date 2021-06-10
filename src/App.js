@@ -11,8 +11,8 @@ render(){
       <Router>
       <Layout>
         <Switch>
-      <Route path='/checkout' component={Checkout}/>
-      <Route path='/' exact component={Shopping}/>
+      <Route path="/Checkout" component={Checkout}/>
+      <Route path="/" exact component={Shopping}/>
       </Switch>
       </Layout>
       </Router>

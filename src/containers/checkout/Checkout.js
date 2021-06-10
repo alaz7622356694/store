@@ -1,17 +1,13 @@
 import React from 'react'
 
-class Checkout extends React.Component{
-render(){
-
-    return
-    (
-        <div>
-<h2>
-    Checkout Page
-</h2>
-        </div>
+class Checkout extends React.Component {
+  render() {
+    return (
+      <div className='check'>
+        <h1>Checkout Page</h1>
+      </div>
     )
-}
+  }
 }
 
 export default Checkout

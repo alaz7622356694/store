@@ -22,7 +22,7 @@ class Shopping extends React.Component{
     }
 
     componentDidMount(){
-        axios.get('').then((response)=>{
+        axios.get('/products.json').then((response)=>{
 
             this.setState({products:response.data})
 
@@ -73,24 +73,24 @@ modalCloseHandler=()=>{
 }
 
 purchaseContinueHandler=()=>{
-this.props.history.push('/checkout')
-this.setState({loading:true})
-    const order={
-        products: this.state.products,
-        totalPrice: this.state.totalPrice,
-        customer:{
-            name: 'Ali' ,
-            email: 'alireza.azari2235@outlook.com' 
+this.props.history.push('/Checkout')
+// this.setState({loading:true})
+//     const order={
+//         products: this.state.products,
+//         totalPrice: this.state.totalPrice,
+//         customer:{
+//             name: 'Ali' ,
+//             email: 'alireza.azari2235@outlook.com' 
 
-        }
+//         }
 
-    }
-    axios.post('/orders.json', order).then((response)=>{
-        this.setState({loading:false , purchased:false})
-    })
-    .catch((error)=>{
-        this.setState({loading:false , purchased:false})
-    })
+//     }
+//     axios.post('/orders.json', order).then((response)=>{
+//         this.setState({loading:false , purchased:false})
+//     })
+//     .catch((error)=>{
+//         this.setState({loading:false , purchased:false})
+//     })
 }
 
     render(){
@@ -123,7 +123,8 @@ this.setState({loading:true})
               <Modal show={this.state.purchased} modalClose={this.modalCloseHandler}>
                  {order}
               </Modal>
-                {controls}
+              {controls}
+                
               
             </Wrapper>
 
