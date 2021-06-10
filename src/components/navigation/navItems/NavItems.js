@@ -6,7 +6,7 @@ const NavItems=()=>{
 
 <ul className='nav-items'>
 <NavItem link="/">Shopping</NavItem>
-<NavItem link="/Checkout">Checkout</NavItem>
+<NavItem link="/account">Account</NavItem>
 </ul>
 
 
