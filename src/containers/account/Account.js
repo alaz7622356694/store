@@ -1,6 +1,7 @@
 import React from 'react'
 import Input from '../../../src/components/ui elements/input/Input'
 import Button from '../../components/ui elements/button/Button'
+import axios from '../../Axios-orders'
 class Account extends React.Component {
 state={
   form:{
@@ -32,7 +33,29 @@ state={
   }
 }
 
+submitHandler=(event)=>{
 
+event.preventDefault()
+
+const formData={
+
+}
+
+for (let item in this.state.form){
+  formData[item]=this.state.form[item].value
+}
+
+
+axios.post('/account.json', formData).then((response)=>{
+  window.alert("your data submitted !");
+})
+.catch((error)=> {
+  console.log(error)
+})
+
+
+
+}
 inputChangeHandler=(event,inputElement)=>{
   const updatedForm= {...this.state.form}
 
@@ -58,7 +81,7 @@ inputChangeHandler=(event,inputElement)=>{
     return (
      <div className='account'>
 <h2>Account</h2>
-<form>
+<form onSubmit={this.submitHandler}>
    {elementArray.map((item)=>{
      return(
      <Input 
