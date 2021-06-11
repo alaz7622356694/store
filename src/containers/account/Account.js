@@ -33,7 +33,19 @@ state={
 }
 
 
+inputChangeHandler=(event,inputElement)=>{
+  const updatedForm= {...this.state.form}
 
+  const updatedElement= {
+    ...updatedForm[inputElement]
+  }
+
+  updatedElement.value=event.target.value
+
+  updatedForm[inputElement]=updatedElement
+
+  this.setState({form:updatedForm})
+}
 
   render() {
     const elementArray=[]
@@ -53,7 +65,9 @@ state={
      key={item.id} 
      elementType={item.config.elementType}
      elementConfig={item.config.elementConfig}
-     value={item.config.value} />)
+     value={item.config.value} 
+     change={(event)=>this.inputChangeHandler(event,item.id)}
+     />)
   })}
     <Button btnType='form'>Submit</Button>
 </form>
