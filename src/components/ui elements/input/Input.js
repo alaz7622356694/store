@@ -2,12 +2,16 @@ import React from 'react'
 
 const Input=(props)=>{
     let inputElement=null
+    const inputClass=['input-element']
+    if(props.invalid){
+        inputClass.push('invalid')
+    }
     switch(props.inputType){
         case 'input':
-            inputElement=<input className='input-element' {...props.elementConfig} value={props.value} onChange={props.change}/>
+            inputElement=<input className={inputClass.join(' ')} {...props.elementConfig} value={props.value} onChange={props.change}/>
             break
             default:
-                inputElement=<input className='input-element' {...props.elementConfig} value={props.value} onChange={props.change}/>
+                inputElement=<input className={inputClass.join(' ')} {...props.elementConfig} value={props.value} onChange={props.change}/>
 
     }
 return(

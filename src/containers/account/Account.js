@@ -11,7 +11,11 @@ state={
         type:'text',
         placeholder:'name...'
       },
-      value:''
+      value:'',
+      validation:{
+        required:true
+      },
+      valid:false
     },
    
     email:{
@@ -20,7 +24,11 @@ state={
         type:'text',
         placeholder:'Email...'
       },
-      value:''
+      value:'',
+      validation:{
+        required:true
+      },
+      valid:false
     },
     password:{
       elementType:'input',
@@ -28,7 +36,11 @@ state={
         type:'password',
         placeholder:'password...'
       },
-      value:''
+      value:'',
+      validation:{
+        required:true
+      },
+      valid:false
     },
   }
 }
@@ -56,6 +68,17 @@ axios.post('/account.json', formData).then((response)=>{
 
 
 }
+
+checkValidation=(value,rules)=>{
+  let isValid=false
+  if(rules.required){
+    isValid=value.trim() !==''
+  }
+
+
+  return isValid
+
+}
 inputChangeHandler=(event,inputElement)=>{
   const updatedForm= {...this.state.form}
 
@@ -64,6 +87,7 @@ inputChangeHandler=(event,inputElement)=>{
   }
 
   updatedElement.value=event.target.value
+  updatedElement.valid=this.checkValidation(updatedElement.value,updatedElement.validation)
 
   updatedForm[inputElement]=updatedElement
 
@@ -90,6 +114,7 @@ inputChangeHandler=(event,inputElement)=>{
      elementConfig={item.config.elementConfig}
      value={item.config.value} 
      change={(event)=>this.inputChangeHandler(event,item.id)}
+     invalid={!item.config.valid}
      />)
   })}
     <Button btnType='form'>Submit</Button>
