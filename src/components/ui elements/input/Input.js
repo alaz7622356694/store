@@ -3,7 +3,7 @@ import React from 'react'
 const Input=(props)=>{
     let inputElement=null
     const inputClass=['input-element']
-    if(props.invalid){
+    if(props.invalid && props.used ){
         inputClass.push('invalid')
     }
     switch(props.inputType){

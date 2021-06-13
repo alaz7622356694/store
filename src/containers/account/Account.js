@@ -15,7 +15,8 @@ state={
       validation:{
         required:true
       },
-      valid:false
+      valid:false,
+      used:false
     },
    
     email:{
@@ -28,7 +29,9 @@ state={
       validation:{
         required:true
       },
-      valid:false
+      valid:false,
+      used:false
+
     },
     password:{
       elementType:'input',
@@ -40,7 +43,9 @@ state={
       validation:{
         required:true
       },
-      valid:false
+      valid:false,
+      used:false
+
     },
   }
 }
@@ -88,6 +93,7 @@ inputChangeHandler=(event,inputElement)=>{
 
   updatedElement.value=event.target.value
   updatedElement.valid=this.checkValidation(updatedElement.value,updatedElement.validation)
+  updatedElement.used=true
 
   updatedForm[inputElement]=updatedElement
 
@@ -115,6 +121,7 @@ inputChangeHandler=(event,inputElement)=>{
      value={item.config.value} 
      change={(event)=>this.inputChangeHandler(event,item.id)}
      invalid={!item.config.valid}
+     used={item.config.used}
      />)
   })}
     <Button btnType='form'>Submit</Button>
